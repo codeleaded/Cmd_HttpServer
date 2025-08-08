@@ -2,8 +2,9 @@
 
 int main() {
     HttpServer hs = HttpServer_New(8080);
-    if(hs.running){
-        HttpServer_Listen(&hs);
+    if(hs.ok){
+        HttpServer_Start(&hs);
+        Thread_Join(&hs.listener,NULL);
     }
     HttpServer_Free(&hs);
 
